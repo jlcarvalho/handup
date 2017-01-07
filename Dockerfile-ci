@@ -1,11 +1,18 @@
 FROM bitriseio/docker-android
 
-RUN apt-get update && apt-get install -y xvfb chromium-browser
+RUN apt-get update && apt-get install -y \
+        curl \
+        apt-transport-https \
+        && curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+        && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
+        && apt-get update && apt-get install -y dbus-x11 git xvfb google-chrome-stable curl --no-install-recommends \
+        && apt-get purge --auto-remove -y curl apt-transport-https \
+        && rm -rf /var/lib/apt/lists/*
 
-ENV DISPLAY :99
-ENV CHROME_BIN /usr/bin/chromium
+ADD xvfb-chromium /usr/bin/xvfb-chromium
+# ADD xvfb-firefox /usr/bin/xvfb-firefox
 
-COPY entrypoint.sh /
-RUN chmod a+x /entrypoint.sh
+RUN chmod a+x /usr/bin/xvfb-chromium
+# RUN chmod a+x /usr/bin/xvfb-firefox
 
 WORKDIR /bitrise/src
