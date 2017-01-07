@@ -19,7 +19,7 @@ export class Room {
     private af: AngularFire
   ) {}
 
-  raiseHand(status) {
+  public raiseHand(status) {
     this.ref.update({
       status,
       user: this.user,
@@ -31,7 +31,7 @@ export class Room {
     return this.room;
   }
 
-  init() : Promise<any> {
+  public init() : Promise<any> {
     return new Promise((resolve, reject) => {
       const alert = this.alertCtrl.create({
         title: 'Bem vindo',
