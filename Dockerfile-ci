@@ -1,9 +1,11 @@
 FROM bitriseio/docker-android
 
-RUN apt-get update && apt-get install -y xvfb chromium
+RUN apt-get update && apt-get install -y xvfb chromium-browser
 
-ADD xvfb-chromium /usr/bin/xvfb-chromium
-RUN ln -s /usr/bin/xvfb-chromium /usr/bin/google-chrome
-RUN ln -s /usr/bin/xvfb-chromium /usr/bin/chromium-browser
+ENV DISPLAY :99
+ENV CHROME_BIN /usr/bin/chromium
+
+COPY entrypoint.sh /
+RUN chmod a+x /entrypoint.sh
 
 WORKDIR /bitrise/src

@@ -38,7 +38,13 @@ module.exports = function(config) {
     port: 9876,
     colors: true,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome_no_sandbox'],
+    customLaunchers: {
+      Chrome_no_sandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     singleRun: false,
     concurrency: Infinity
   })
