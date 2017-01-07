@@ -37,9 +37,8 @@ module.exports = function(config) {
     reporters: ['progress', 'karma-typescript'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_DEBUG,
     autoWatch: true,
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
     singleRun: false,
     concurrency: Infinity
   })
