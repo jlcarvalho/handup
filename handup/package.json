@@ -9,8 +9,8 @@
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
-    "e2e": "concurrently --kill-others \"ionic serve\" \"sleep 25 && protractor\" --success first",
-    "test": "karma start karma.conf.js --single-run",
+    "e2e": "concurrently --kill-others \"ionic serve\" \"sleep 25 && xvfb-run protractor\" --success first",
+    "test": "xvfb-run karma start karma.conf.js --single-run",
     "test:all": "npm run test && npm run e2e",
     "postinstall": "webdriver-manager update"
   },
