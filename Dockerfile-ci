@@ -1,3 +1,9 @@
 FROM bitriseio/docker-android
 
 WORKDIR /bitrise/src
+
+RUN apt-get update && apt-get install -y \
+        phantomjs \
+        python2.7 \
+        python-pip \
+        && pip install selenium
