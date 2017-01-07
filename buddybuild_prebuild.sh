@@ -7,7 +7,7 @@ npm install node-sass
 
 echo '=== Running Tests ==='
 npm install -g karma
-npm test
+karma start --single-run
 
 if [ $? -eq 0 ]
 then
