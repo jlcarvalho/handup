@@ -2,8 +2,12 @@
 
 cd /Users/buddybuild/workspace
 
+echo '=== Fixing Sass Error ==='
+npm install node-sass
+
 echo '=== Running Tests ==='
-npm run test:all
+npm install -g karma
+npm test
 
 if [ $? -eq 0 ]
 then
