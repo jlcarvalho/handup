@@ -1,0 +1,14 @@
+{
+  "name": "handup-ionic",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "cd handup/ && npm run test:all"
+  },
+  "homepage": "https://github.com/jlcarvalho/handup#readme",
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "pre-commit": [
+    "npm test"
+  ]
+}

@@ -51,6 +51,7 @@ workflows:
             set -x
 
             npm install
+            npm run test:all
             ionic platform add android
             ionic build android
             mv ./platforms/android/build/outputs/apk/android-debug.apk "${BITRISE_DEPLOY_DIR}"
@@ -88,5 +89,5 @@ workflows:
     before_run:
     - _ci_setup
     after_run:
-    - build-ios
+    - build-android
     - _ci_finish
