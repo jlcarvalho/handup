@@ -32,6 +32,10 @@ resources/android/
 resources/ios/
 $RECYCLE.BIN/
 
+# e2e
+/e2e/*.js
+/e2e/*.map
+
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
