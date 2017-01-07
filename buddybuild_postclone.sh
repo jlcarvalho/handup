@@ -10,7 +10,7 @@ echo '=== Start to run : npm install npm -g'
 npm install npm -g
 
 echo '=== Install cordova and ionic@beta'
-npm install -g cordova ionic@beta
+npm install -g cordova ionic
 
 echo '=== Start to run : npm install'
 npm install
