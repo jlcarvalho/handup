@@ -2,7 +2,10 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { MyApp } from './app.component';
+
 import { HomePage } from '../pages/home/home';
+
+import { Room } from '../providers/room';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBkZlNEndLOCKUS0EeSB6Ls-F3Jr2tG26o",
@@ -26,6 +29,12 @@ export const firebaseConfig = {
     MyApp,
     HomePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: IonicErrorHandler
+    },
+    Room
+  ]
 })
 export class AppModule {}
