@@ -4,6 +4,11 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 app:
   envs:
   - IONIC_PROJ_DIR_PATH: "./handup"
+trigger_map:
+- push_branch: '*'
+  workflow: ci-android
+- pull_request_source_branch: '*'
+  workflow: ci-android
 workflows:
   _ci_finish:
     steps:
