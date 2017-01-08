@@ -1,8 +1,9 @@
+---
 format_version: 1.3.1
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 app:
   envs:
-  - IONIC_PROJ_DIR_PATH: ./handup
+  - IONIC_PROJ_DIR_PATH: "./handup"
 workflows:
   _ci_finish:
     steps:
@@ -14,27 +15,22 @@ workflows:
         run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
     - git-clone@3.4.1: {}
     - script@1.1.3:
-        title: "Set ENV vars"
+        title: "Setup test env"
         inputs:
         - content: |-
             #!/bin/bash
             # fail if any commands fails
             set -e
-            # debug log
-            set -x
-            
-            apt-get update && apt-get install -y  curl apt-transport-https
+
+            apt-get update && apt-get install -y apt-transport-https
             curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
             echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
-            apt-get update && apt-get install -y dbus-x11 git xvfb google-chrome-stable curl --no-install-recommends
-            apt-get purge --auto-remove -y curl apt-transport-https
+            apt-get update && apt-get install -y dbus-x11 xvfb google-chrome-stable --no-install-recommends
+            apt-get purge --auto-remove -y apt-transport-https
             rm -rf /var/lib/apt/lists/*
 
             cp xvfb-chromium /usr/bin/xvfb-chromium
-            # ADD xvfb-firefox /usr/bin/xvfb-firefox
-
             chmod a+x /usr/bin/xvfb-chromium
-            # RUN chmod a+x /usr/bin/xvfb-firefox
 
             envman add --key CHROME_BIN --value "/usr/bin/xvfb-chromium"
           opts: {}
@@ -44,8 +40,8 @@ workflows:
         title: Change workdir to ionic project dir
         inputs:
         - opts: {}
-          path: $IONIC_PROJ_DIR_PATH
-        - is_create_path: "false"
+          path: "$IONIC_PROJ_DIR_PATH"
+        - is_create_path: 'false'
           opts: {}
     - script@1.1.3:
         title: Build the app for distribution
@@ -56,7 +52,7 @@ workflows:
             #
             npm install
             mkdir -p www
-            npm run test:all
+            npm test
             ionic platform add android
             ionic build android --prod
             mv ./platforms/android/build/outputs/apk/android-debug.apk "${BITRISE_DEPLOY_DIR}"

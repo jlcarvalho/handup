@@ -10,5 +10,6 @@
   },
   "pre-commit": [
     "npm test"
-  ]
+  ],
+  "dependencies": {}
 }
