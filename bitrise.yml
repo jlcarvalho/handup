@@ -57,7 +57,7 @@ workflows:
             #
             npm install
             mkdir -p www
-            npm test:all
+            npm run test:all
             ionic platform add android
             ionic build android --prod
             mv ./platforms/android/build/outputs/apk/android-debug.apk "${BITRISE_DEPLOY_DIR}"
