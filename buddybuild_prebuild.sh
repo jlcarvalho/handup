@@ -7,7 +7,7 @@ npm install node-sass
 
 echo '=== Running Tests ==='
 npm install -g karma
-karma start --single-run
+npm test
 
 echo '=== Start to run : ionic add platforms'
 ionic platform add ios
