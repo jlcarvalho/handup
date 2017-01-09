@@ -2,8 +2,8 @@
 
 cd /Users/buddybuild/workspace
 
-echo '=== Fixing Sass Error ==='
-npm install node-sass
+echo '=== Install dependencies ==='
+npm install
 
 echo '=== Running Tests ==='
 npm install -g karma
