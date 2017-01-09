@@ -9,6 +9,11 @@ echo '=== Running Tests ==='
 npm install -g karma
 karma start --single-run
 
+echo '=== Start to run : ionic add platforms'
+mkdir -p www
+ionic platform add ios
+ionic platform add android
+
 if [ $? -eq 0 ]
 then
   echo "Karma Tests Successful!"
