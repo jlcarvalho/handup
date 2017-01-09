@@ -21,11 +21,9 @@ fi
 if [ $KARMA_TESTS == 1 ]; then
   if [ -z ${PLATFORM+x} ]; then
     echo '=== Could not detect environmental variable PLATFORM. ionic build both ios and android.'
-    ionic platform add ios
     ionic build android ios
   else
     echo '=== Detected environmental variable PLATFORM is set:' $PLATFORM
-    ionic platform add $PLATFORM
     ionic build $PLATFORM
   fi
 else
