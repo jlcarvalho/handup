@@ -5,13 +5,21 @@ cd /Users/buddybuild/workspace
 echo '=== Install dependencies ==='
 npm install
 
+apt-get update && apt-get install -y apt-transport-https unzip
+curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+apt-get update && apt-get install -y dbus-x11 xvfb google-chrome-stable --no-install-recommends
+apt-get purge --auto-remove -y apt-transport-https
+rm -rf /var/lib/apt/lists/*
+
+cp xvfb-chromium /usr/bin/xvfb-chromium
+chmod a+x /usr/bin/xvfb-chromium
+
+export CHROME_BIN=/usr/bin/xvfb-chromium
+
 echo '=== Running Tests ==='
 npm install -g karma
 npm test
-
-echo '=== Start to run : ionic add platforms'
-ionic platform add ios
-ionic platform add android
 
 if [ $? -eq 0 ]
 then
