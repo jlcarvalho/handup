@@ -1,5 +1,5 @@
 echo '=== Karma Test Environemnt ==='
-npm install -g karma
+npm install -g ionic karma
 npm install -g karma-cli
 
 echo '=== Start to run : ionic add platforms'
