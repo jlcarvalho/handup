@@ -12,10 +12,9 @@ apt-get update && apt-get install -y dbus-x11 xvfb google-chrome-stable --no-ins
 apt-get purge --auto-remove -y apt-transport-https
 rm -rf /var/lib/apt/lists/*
 
-cp xvfb-chromium /usr/bin/xvfb-chromium
-chmod a+x /usr/bin/xvfb-chromium
+chmod a+x xvfb-chromium
 
-export CHROME_BIN=/usr/bin/xvfb-chromium
+export CHROME_BIN=xvfb-chromium
 
 echo '=== Running Tests ==='
 npm install -g karma
