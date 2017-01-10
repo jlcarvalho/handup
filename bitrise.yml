@@ -9,9 +9,6 @@ app:
   - BITRISE_SCHEME: handup-ionic
     opts:
       is_expand: true
-  - FORCE_TEAM_ID: 6DLEBYX6Q8
-    opts:
-      is_expand: true
 trigger_map:
 - push_branch: master
   workflow: ci-android
@@ -24,7 +21,7 @@ workflows:
         run_if: '{{getenv "BITRISE_BUILD_URL" | ne ""}}'
     - slack@2.3.0:
         inputs:
-        - webhook_url: https://hooks.slack.com/services/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
+        - webhook_url: "$SLACK_WEBHOOK"
         - channel: "#comunicados"
         - from_username: Mr. Robot
         - from_username_on_error: Mr. Robot
@@ -74,8 +71,6 @@ workflows:
 
             brew tap caskroom/cask
             brew cask install google-chrome
-
-            echo $CHROME_BIN
   test:
     steps:
     - script@1.1.3:
