@@ -4,8 +4,8 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 app:
   envs:
   - IONIC_PROJ_DIR_PATH: "./handup"
-  - BITRISE_PROJECT_PATH: "./platforms/ios/handup.xcodeproj"
-  - BITRISE_SCHEME: handup
+  - BITRISE_PROJECT_PATH: "./platforms/ios/handup-ionic.xcworkspace"
+  - BITRISE_SCHEME: handup-ionic
   - FORCE_TEAM_ID: 6DLEBYX6Q8
 trigger_map:
 - push_branch: master
@@ -104,7 +104,6 @@ workflows:
             #
             ionic platform add ios
             ionic build ios --prod
-            mv ./platforms/android/build/outputs/apk/android-debug.apk "${BITRISE_DEPLOY_DIR}"
     - recreate-user-schemes:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
