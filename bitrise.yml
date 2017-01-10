@@ -56,8 +56,6 @@ workflows:
 
             brew tap caskroom/cask
             brew cask install google-chrome
-
-            echo $CHROME_BIN
           opts: {}
   test:
     steps:
